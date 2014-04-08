@@ -1,4 +1,7 @@
-#Dependencies
-pip install git+https://github.com/django-nonrel/django@nonrel-1.5
-pip install git+https://github.com/django-nonrel/djangotoolbox
-pip install git+https://github.com/django-nonrel/mongodb-engine
+#Dependencie
+#pip install djangotoolbox 1.6.2
+#pip install django-mongodb-engine 0.5.1
+
+git+https://github.com/django-nonrel/django@nonrel-1.5
+git+https://github.com/django-nonrel/djangotoolbox
+git+https://github.com/django-nonrel/mongodb-engine
