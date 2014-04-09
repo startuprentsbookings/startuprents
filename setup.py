@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 # Copyright 2014 Rents and Bookings
 # Copyright (c) 2013 Hewlett-Packard Development Company, L.P.
 #
@@ -31,46 +32,49 @@
 # limitations under the License.
 
 import os
-import setuptools
+import sys
+from setuptools import setup
 
-from startuprents.common import setup
+with open('requirements.txt') as f:
+    requirements = f.read().splitlines()
 
-requires = setup.parse_requirements()
-depend_links = setup.parse_dependency_links()
-tests_require = setup.parse_requirements(['test-requirements.txt.txt'])
-project = 'startuprents'
+if sys.version_info < (2, 7):
+    requirements.append('argparse')
+elif sys.version_info < (2, 6):
+    raise 'Must use python 2.6 or greater'
 
+with open('README.rst') as f:
+    long_description = f.read()
 
-def read_file(file_name):
-    return open(os.path.join(os.path.dirname(__file__), file_name)).read()
-
-setuptools.setup(
-    name=project,
-    # version=setup.get_version(project),
-    version="1.0",
-    author="Rents and Booking Contributors",
-    author_email="startuprentsbookings@gmail.com",
-    description="Web System Rents LATAM",
-    long_description=read_file("README.rst"),
-    license="Apache License, Version 2.0",
-    url="https://github.com/startuprentsbookings/startuprents.git",
-    packages=setuptools.find_packages(exclude=['tests', 'tests.*']),
-    cmdclass=setup.get_cmdclass(),
-    install_requires=requires,
-    tests_require=tests_require,
-    setup_requires=['setuptools-git>=0.4'],
-    include_package_data=True,
-    dependency_links=depend_links,
+setup(
+    name='rents',
+    version='1.0',
+    author='Rents and Bookings',
+    author_email='joedval@gmail.com',
+    description='Initial project to LATAM',
+    long_description=long_description,
+    url='https://github.com/startuprentsbookings/startuprents',
+    install_requires=requirements,
+    packages=['rents'],
+    #entry_points={
+    #    'console_scripts': [
+    #        'fabuloso-shell = fabuloso.shell:main',
+    #        'fabuloso = fabuloso.cli:main'
+    #    ]
+    #},
+    license='Apache License 2.0',
     classifiers=[
         "Development Status :: 1 - Planning",
         "Environment :: Console",
         "Intended Audience :: Developers",
         "Intended Audience :: Information Technology",
+        "Intended Audience :: System Administrators",
         "License :: OSI Approved :: Apache Software License",
-        "Operating System :: OS Independent",
-        "Programming Language :: Python"
+        "Natural Language :: English",
+        "Operating System :: POSIX :: Linux",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 2.7",
+        "Topic :: System"
     ]
-    #entry_points={
-    #    "console_scripts": ["automation = automationclient.shell:main"]
-    #}
 )

@@ -1,0 +1,4 @@
+include README.rst
+include COPYING.txt
+include requirements*.txt
+recursive-include etc *
