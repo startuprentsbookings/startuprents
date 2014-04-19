@@ -18,5 +18,11 @@ from django.contrib import admin
 from rentsapp.models import Post
 from rentsapp.models import Comment
 
+
+#class PostAdmin(admin.ModelAdmin):
+#    fields = ('body', 'permalink', 'author', 'title', 'tags', 'comments', 'date')
+
+#admin.site.register(Post, PostAdmin)
+#TODO- Must be fix (Post) to be manage trough the admin page due to tags and comments
 admin.site.register(Post)
 admin.site.register(Comment)

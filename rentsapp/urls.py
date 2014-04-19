@@ -16,8 +16,24 @@
 
 from django.conf.urls import patterns, url
 
-from rents import views
+#Django Tutorial
+from rentsapp import views
 
+#Django-MongoDB-Engine tutorial
+from django.views.generic import ListView, DetailView
+from models import Post
+
+
+#Django Tutorial
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index')
+)
+
+#Django-MongoDB-Engine tutorial
+post_detail = DetailView.as_view(model=Post)
+post_list = ListView.as_view(model=Post)
+
+urlpatterns = patterns('',
+    url(r'^post/(?P<pk>[a-z\d]+)/$', post_detail, name='post_detail'),
+    url(r'^$', post_list, name='post_list'),
 )

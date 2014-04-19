@@ -18,5 +18,6 @@
 
 from django.http import HttpResponse
 
+
 def index(request):
-    return HttpResponse("Hello, world. You're at the poll index.")
+    return HttpResponse("Hello, world. You're at the Startup Rents and bookings index.")
