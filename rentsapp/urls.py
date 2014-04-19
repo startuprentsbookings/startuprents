@@ -13,3 +13,11 @@
 #    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 #    License for the specific language governing permissions and limitations
 #    under the License.
+
+from django.conf.urls import patterns, url
+
+from rents import views
+
+urlpatterns = patterns('',
+    url(r'^$', views.index, name='index')
+)

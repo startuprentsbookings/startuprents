@@ -13,3 +13,26 @@
 #    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 #    License for the specific language governing permissions and limitations
 #    under the License.
+
+from django.db import models
+
+# Create your models here.
+
+from djangotoolbox.fields import ListField
+from djangotoolbox.fields import EmbeddedModelField
+
+
+class Post(models.Model):
+    body = models.TextField()
+    permalink = models.CharField(max_length=255)
+    author = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
+    tags = ListField()
+    comments = ListField(EmbeddedModelField('Comment'))
+    date = models.DateTimeField(auto_now_add=True)
+
+
+class Comment(models.Model):
+    body = models.TextField()
+    email = models.EmailField()
+    author = models.CharField(max_length=255)
