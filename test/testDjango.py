@@ -15,5 +15,8 @@
 #    under the License.
 
 import django
+import os
+
 print("Has been installed the minimal with Django");
 print("Django Version: "+django.get_version())
+print(os.path)
